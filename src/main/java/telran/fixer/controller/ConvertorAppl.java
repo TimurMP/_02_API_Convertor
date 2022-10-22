@@ -6,6 +6,7 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
+import telran.fixer.dto.ResponseDto;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,8 +30,10 @@ public class ConvertorAppl {
 
 
         RequestEntity<String> requestEntity = new RequestEntity<>(headers, HttpMethod.GET, builder.build().toUri() );
-        ResponseEntity<String> responseEntity = restTemplate.exchange(requestEntity, String.class);
-        System.out.println(responseEntity.getBody());
+        ResponseEntity<ResponseDto> responseEntity = restTemplate.exchange(requestEntity, ResponseDto.class);
+//        responseEntity.getBody().getResult();
+        System.out.println(responseEntity.getBody().getResult());
+
 
 
 
@@ -42,7 +45,7 @@ public class ConvertorAppl {
         System.out.println("Convert From (Example: USD)");
         String from = reader.readLine();
         strings[0] = from;
-        System.out.println("Convert To (Example: CAD");
+        System.out.println("Convert To (Example: CAD)");
         String to = reader.readLine();
         strings[1] = to;
         System.out.println("Amount");
