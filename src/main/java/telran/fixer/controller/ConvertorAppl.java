@@ -32,7 +32,9 @@ public class ConvertorAppl {
         RequestEntity<String> requestEntity = new RequestEntity<>(headers, HttpMethod.GET, builder.build().toUri() );
         ResponseEntity<ResponseDto> responseEntity = restTemplate.exchange(requestEntity, ResponseDto.class);
 //        responseEntity.getBody().getResult();
-        System.out.println(responseEntity.getBody().getResult());
+        String res = responseEntity.getBody().getResult();
+//        System.out.println(res);
+        printResult(arr[0], arr[1], res);
 
 
 
@@ -52,6 +54,22 @@ public class ConvertorAppl {
         String amount = reader.readLine();
         strings[2] = amount;
         return strings;
+    }
+
+    public static void printResult(String from, String to, String result){
+        System.out.printf("--------------------------------------%n");
+        System.out.printf("       Currency Convertor         %n");
+//        System.out.printf("    (printf table example)      %n");
+        System.out.printf("--------------------------------------%n");
+        System.out.printf("| %-10s | %-8s | %10s |%n", "From", "To", "Result");
+        System.out.printf("--------------------------------------%n");
+        System.out.printf("| %-10s | %-8s | %10s |%n", from.toUpperCase(), to.toUpperCase(),  result);
+        System.out.printf("--------------------------------------%n");
+
+
+
+
+
     }
 
 
